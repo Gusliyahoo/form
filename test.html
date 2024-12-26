@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoring Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            table-layout: fixed; /* Ensure consistent column widths */
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            text-align: center;
+            padding: 8px;
+            width: 20%; /* Each column gets an equal share of the table width */
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .section-title {
+            margin-top: 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 4em;
+            text-align: center;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: rgb(0, 255, 76);
+            border: 1px solid #070606;
+        }
+    </style>
+</head>
+<body>
+    <h1>Time Wasters</h1>
+    <p>This exercise is designed to help you reflect on your habits and behaviors. You'll be asked to rate how frequently you exhibit specific behaviors</p>
+    <form id="scoringForm">
+        <div class="section">
+            <p class="section-title">Section 1: Time Management</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Question</th>
+                        <th>Always</th>
+                        <th>Often</th>
+                        <th>Sometimes</th>
+                        <th>Rarely</th>
+                        <th>Never</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Do I miss deadlines?</td>
+                        <td><input type="radio" name="q1" value="1" required></td>
+                        <td><input type="radio" name="q1" value="2"></td>
+                        <td><input type="radio" name="q1" value="3"></td>
+                        <td><input type="radio" name="q1" value="4"></td>
+                        <td><input type="radio" name="q1" value="5"></td>
+                    </tr>
+                    <tr>
+                        <td>Do I postpone decisions?</td>
+                        <td><input type="radio" name="q2" value="1" required></td>
+                        <td><input type="radio" name="q2" value="2"></td>
+                        <td><input type="radio" name="q2" value="3"></td>
+                        <td><input type="radio" name="q2" value="4"></td>
+                        <td><input type="radio" name="q2" value="5"></td>
+                    </tr>
+                    <tr>
+                        <td>Do I arrive late for meetings?</td>
+                        <td><input type="radio" name="q3" value="1" required></td>
+                        <td><input type="radio" name="q3" value="2"></td>
+                        <td><input type="radio" name="q3" value="3"></td>
+                        <td><input type="radio" name="q3" value="4"></td>
+                        <td><input type="radio" name="q3" value="5"></td>
+                    </tr>
+                    <tr>
+                        <td>Do I leave jobs undone?</td>
+                        <td><input type="radio" name="q4" value="1" required></td>
+                        <td><input type="radio" name="q4" value="2"></td>
+                        <td><input type="radio" name="q4" value="3"></td>
+                        <td><input type="radio" name="q4" value="4"></td>
+                        <td><input type="radio" name="q4" value="5"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <p class="section-title">Section 2: Meeting Commitments</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Question</th>
+                        <th>Always</th>
+                        <th>Often</th>
+                        <th>Sometimes</th>
+                        <th>Rarely</th>
+                        <th>Never</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Do I arrive late for meetings?</td>
+                        <td><input type="radio" name="q5" value="1" required></td>
+                        <td><input type="radio" name="q5" value="2"></td>
+                        <td><input type="radio" name="q5" value="3"></td>
+                        <td><input type="radio" name="q5" value="4"></td>
+                        <td><input type="radio" name="q5" value="5"></td>
+                    </tr>
+                    <tr>
+                        <td>Do I leave jobs undone?</td>
+                        <td><input type="radio" name="q6" value="1" required></td>
+                        <td><input type="radio" name="q6" value="2"></td>
+                        <td><input type="radio" name="q6" value="3"></td>
+                        <td><input type="radio" name="q6" value="4"></td>
+                        <td><input type="radio" name="q6" value="5"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <button type="button" onclick="calculateScore()">Submit</button>
+    </form>
+
+    <div id="result" class="result"></div>
+
+    <script>
+        function calculateScore() {
+          const form = document.getElementById('scoringForm');
+          const formData = new FormData(form);
+          let score = 0;
+      
+          // Loop through the form data to calculate the score
+          for (const [key, value] of formData.entries()) {
+            score += parseInt(value, 10);
+          }
+      
+          // Display the calculated score
+          document.getElementById('result').textContent = `Your total score is: ${score}`;
+        }
+      </script>      
+</body>
+</html>
+
